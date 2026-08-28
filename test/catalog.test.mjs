@@ -43,7 +43,9 @@ test('all profile scaffold dry-runs avoid GitHub and Google mutations', () => {
 test('scripts keep repository creation private and deployment human-gated', () => {
   const scaffold = readFileSync('skills/copado-apps-script-webapp/scripts/scaffold.sh', 'utf8');
   assert.match(scaffold, /gh repo create "\$github_repo" --private/);
+  assert.match(scaffold, /\(cd "\$destination" && npm ci\)/);
   assert.doesNotMatch(scaffold, /--public/);
+  assert.doesNotMatch(scaffold, /npm --prefix/);
   assert.doesNotMatch(scaffold, /clasp (login|push|deploy|redeploy)/);
   const skill = readFileSync('skills/copado-apps-script-webapp/SKILL.md', 'utf8');
   assert.match(skill, /Stop at human gates/);
@@ -84,7 +86,7 @@ test('trigger fixture is represented by portable description terms', () => {
 
 test('skill package contains only the self-contained skill directory', () => {
   execFileSync('sh', ['scripts/package-skill.sh', 'copado-apps-script-webapp'], { stdio: 'inherit' });
-  const archive = 'dist/copado-apps-script-webapp-v0.1.1.tar.gz';
+  const archive = 'dist/copado-apps-script-webapp-v0.1.2.tar.gz';
   const files = execFileSync('tar', ['-tzf', archive], { encoding: 'utf8' }).trim().split('\n');
   assert.ok(files.length > 5);
   assert.ok(files.every((file) => file.startsWith('copado-apps-script-webapp/')));

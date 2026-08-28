@@ -8,7 +8,7 @@
   "skills": [
     {
       "name": "copado-apps-script-webapp",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "path": "skills/copado-apps-script-webapp",
       "owners": ["abhisheksaxena7"],
       "compatibility": {
@@ -16,7 +16,7 @@
         "claudeCode": true,
         "agentSkills": "portable"
       },
-      "releaseTag": "copado-apps-script-webapp-v0.1.1"
+      "releaseTag": "copado-apps-script-webapp-v0.1.2"
     }
   ]
 }

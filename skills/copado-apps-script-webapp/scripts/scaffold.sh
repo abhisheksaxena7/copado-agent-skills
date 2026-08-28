@@ -63,7 +63,7 @@ if [ -n "$canvas_source" ]; then
 fi
 
 node "$skill_dir/scripts/prepare-project.mjs" "$destination" "$name"
-npm --prefix "$destination" ci
+(cd "$destination" && npm ci)
 node "$destination/scripts/init-project.mjs" \
   --root "$destination" \
   --profile "$profile" \

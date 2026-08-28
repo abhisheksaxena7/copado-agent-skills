@@ -73,6 +73,8 @@ node "$destination/scripts/init-project.mjs" \
   --app-chrome "$app_chrome" \
   --sheet-property "$sheet_property"
 (cd "$destination" && npm test)
+node -e 'const c=require(process.argv[1]); if(c.profile!==process.argv[2]) throw new Error(`Tests changed profile to ${c.profile}; expected ${process.argv[2]}`)' \
+  "$destination/project.config.json" "$profile"
 
 if [ -n "$github_repo" ]; then
   "$skill_dir/scripts/preflight.sh" github

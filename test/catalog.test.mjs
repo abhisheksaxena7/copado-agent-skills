@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { existsSync, mkdtempSync, readFileSync } from 'node:fs';
+import { existsSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { test } from 'node:test';
@@ -50,6 +50,28 @@ test('scripts keep repository creation private and deployment human-gated', () =
   assert.match(skill, /Never ask the user to paste `CLASPRC_JSON`/);
 });
 
+test('scaffold preparation keeps package-lock metadata in sync', () => {
+  const root = mkdtempSync(join(tmpdir(), 'copado-package-lock-'));
+  writeFileSync(join(root, 'package.json'), JSON.stringify({ name: 'template-name', version: '0.1.0' }));
+  writeFileSync(join(root, 'package-lock.json'), JSON.stringify({
+    name: 'template-name',
+    version: '0.1.0',
+    lockfileVersion: 3,
+    packages: { '': { name: 'template-name', version: '0.1.0' } }
+  }));
+  execFileSync(process.execPath, [
+    'skills/copado-apps-script-webapp/scripts/prepare-project.mjs',
+    root,
+    'generated-project'
+  ]);
+  const packageJson = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8'));
+  const packageLock = JSON.parse(readFileSync(join(root, 'package-lock.json'), 'utf8'));
+  assert.equal(packageJson.name, 'generated-project');
+  assert.equal(packageJson.private, true);
+  assert.equal(packageLock.name, 'generated-project');
+  assert.equal(packageLock.packages[''].name, 'generated-project');
+});
+
 test('trigger fixture is represented by portable description terms', () => {
   const skill = readFileSync('skills/copado-apps-script-webapp/SKILL.md', 'utf8');
   const description = /^description:\s*(.+)$/m.exec(skill)?.[1] || '';
@@ -62,7 +84,7 @@ test('trigger fixture is represented by portable description terms', () => {
 
 test('skill package contains only the self-contained skill directory', () => {
   execFileSync('sh', ['scripts/package-skill.sh', 'copado-apps-script-webapp'], { stdio: 'inherit' });
-  const archive = 'dist/copado-apps-script-webapp-v0.1.0.tar.gz';
+  const archive = 'dist/copado-apps-script-webapp-v0.1.1.tar.gz';
   const files = execFileSync('tar', ['-tzf', archive], { encoding: 'utf8' }).trim().split('\n');
   assert.ok(files.length > 5);
   assert.ok(files.every((file) => file.startsWith('copado-apps-script-webapp/')));

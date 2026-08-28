@@ -62,6 +62,7 @@ if [ -n "$canvas_source" ]; then
   cp "$canvas_source" "$destination/src/App.tsx"
 fi
 
+node "$skill_dir/scripts/prepare-project.mjs" "$destination" "$name"
 npm --prefix "$destination" ci
 node "$destination/scripts/init-project.mjs" \
   --root "$destination" \

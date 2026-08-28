@@ -4,7 +4,7 @@ A collaborative catalog of portable Agent Skills for Copado workflows. Each `ski
 
 ## Available skills
 
-- `copado-apps-script-webapp` `0.1.0`: private-by-default static, read-only Sheet, and vendored Canvas Apps Script web apps with stable `/exec` deployment safeguards.
+- `copado-apps-script-webapp` `0.1.1`: private-by-default static, read-only Sheet, and vendored Canvas Apps Script web apps with stable `/exec` deployment safeguards.
 
 ## Install
 
@@ -16,7 +16,7 @@ Clone a reviewed release of this catalog, then:
 ./install.sh copado-apps-script-webapp --all
 ```
 
-Pin an independent skill release with `--version 0.1.0`. Existing installations are not overwritten unless `--force` is explicit.
+Pin an independent skill release with `--version 0.1.1`. Existing installations are not overwritten unless `--force` is explicit.
 
 Authoritative manual fallback: copy the unchanged `skills/copado-apps-script-webapp` directory to `~/.cursor/skills/` or `~/.claude/skills/`.
 
@@ -29,7 +29,7 @@ scripts/validate-skill.sh copado-apps-script-webapp
 scripts/package-skill.sh copado-apps-script-webapp
 ```
 
-Packages use namespaced versions such as `copado-apps-script-webapp-v0.1.0`; releasing one skill does not imply other skills changed.
+Packages use namespaced versions such as `copado-apps-script-webapp-v0.1.1`; releasing one skill does not imply other skills changed.
 
 ## Add a skill
 

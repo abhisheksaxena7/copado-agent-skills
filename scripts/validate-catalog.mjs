@@ -80,6 +80,14 @@ for (const entry of catalog.skills || []) {
       if (!script.startsWith('#!/usr/bin/env sh')) problems.push(`${entry.name}: ${scriptName} must use portable POSIX shell`);
     } catch { problems.push(`${entry.name}: missing scripts/${scriptName}`); }
   }
+  if (entry.name === 'copado-apps-script-webapp') {
+    try {
+      const helper = await readFile(resolve(skillDir, 'scripts/prepare-project.mjs'), 'utf8');
+      if (!helper.includes('package-lock.json') || !helper.includes("packages?.['']")) {
+        problems.push(`${entry.name}: prepare-project.mjs must synchronize package-lock metadata`);
+      }
+    } catch { problems.push(`${entry.name}: missing scripts/prepare-project.mjs`); }
+  }
 }
 
 if (problems.length) {

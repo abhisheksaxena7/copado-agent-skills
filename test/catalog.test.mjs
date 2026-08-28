@@ -86,7 +86,7 @@ test('trigger fixture is represented by portable description terms', () => {
 
 test('skill package contains only the self-contained skill directory', () => {
   execFileSync('sh', ['scripts/package-skill.sh', 'copado-apps-script-webapp'], { stdio: 'inherit' });
-  const archive = 'dist/copado-apps-script-webapp-v0.1.5.tar.gz';
+  const archive = 'dist/copado-apps-script-webapp-v0.1.6.tar.gz';
   const files = execFileSync('tar', ['-tzf', archive], { encoding: 'utf8' }).trim().split('\n');
   assert.ok(files.length > 5);
   assert.ok(files.every((file) => file.startsWith('copado-apps-script-webapp/')));

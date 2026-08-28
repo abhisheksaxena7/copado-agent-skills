@@ -4,21 +4,35 @@ A collaborative catalog of portable Agent Skills for Copado workflows. Each `ski
 
 ## Available skills
 
-- `copado-apps-script-webapp` `0.1.5`: private-by-default static, read-only Sheet, and vendored Canvas Apps Script web apps with stable `/exec` deployment safeguards.
+- `copado-apps-script-webapp` `0.1.6`: private-by-default static, read-only Sheet, and vendored Canvas Apps Script web apps with stable `/exec` deployment safeguards.
 
 ## Install
 
-Clone a reviewed release of this catalog, then:
+Clone a reviewed release of this catalog:
 
 ```sh
-./install.sh copado-apps-script-webapp --cursor
-./install.sh copado-apps-script-webapp --claude
-./install.sh copado-apps-script-webapp --all
+git clone --depth 1 --branch copado-apps-script-webapp-v0.1.6 \
+  https://github.com/abhisheksaxena7/copado-agent-skills.git
+cd copado-agent-skills
 ```
 
-Pin an independent skill release with `--version 0.1.5`. Existing installations are not overwritten unless `--force` is explicit.
+Install for Cursor:
+
+```sh
+./install.sh copado-apps-script-webapp --version 0.1.6 --cursor
+```
+
+Install for Claude Code:
+
+```sh
+./install.sh copado-apps-script-webapp --version 0.1.6 --claude
+```
+
+Use `--all` to install the unchanged payload for both IDEs. Restart/reload the IDE or begin a new agent session after first installation. Existing installations are not overwritten unless `--force` is explicit.
 
 Authoritative manual fallback: copy the unchanged `skills/copado-apps-script-webapp` directory to `~/.cursor/skills/` or `~/.claude/skills/`.
+
+See `docs/EMPLOYEE_ONBOARDING.md` for prerequisites, invocation, profile selection, expected output, and human gates. See `docs/COMPATIBILITY_AND_RELEASES.md` for the supported version pair, upgrades, canary status, and the remaining `v1.0.0` gates.
 
 ## Validate and package
 
@@ -29,10 +43,10 @@ scripts/validate-skill.sh copado-apps-script-webapp
 scripts/package-skill.sh copado-apps-script-webapp
 ```
 
-Packages use namespaced versions such as `copado-apps-script-webapp-v0.1.5`; releasing one skill does not imply other skills changed.
+Packages use namespaced versions such as `copado-apps-script-webapp-v0.1.6`; releasing one skill does not imply other skills changed.
 
 ## Add a skill
 
 Copy `templates/new-skill`, add `VERSION`, references, scripts, fixtures, and a unique `catalog.json` entry. Keep executable product templates in separate repositories and pin immutable releases from the skill.
 
-See `CONTRIBUTING.md`, `SECURITY.md`, and the pull request template. The repository owner confirmed provenance, Copado branding/republication approval, personal-account publication, and MIT compatibility. Publication still requires an authenticated `abhisheksaxena7` GitHub CLI session and the paired template release.
+The catalog and template are public, but scaffolded applications, Google resources, IDs, credentials, URLs, and business data remain private. See `CONTRIBUTING.md`, `SECURITY.md`, and the pull request template. The repository owner confirmed provenance, Copado branding/republication approval, personal-account publication, and MIT compatibility.

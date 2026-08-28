@@ -1,0 +1,55 @@
+name: Release one skill
+
+on:
+  workflow_dispatch:
+    inputs:
+      skill:
+        description: Skill name
+        required: true
+        type: string
+      version:
+        description: Version without v prefix
+        required: true
+        type: string
+      confirm:
+        description: Type release-skill
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    if: ${{ inputs.confirm == 'release-skill' }}
+    runs-on: ubuntu-latest
+    environment: releases
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run validate
+      - name: Verify requested version
+        env:
+          SKILL: ${{ inputs.skill }}
+          VERSION: ${{ inputs.version }}
+        run: |
+          test -f "skills/$SKILL/VERSION"
+          test "$(tr -d '[:space:]' < "skills/$SKILL/VERSION")" = "$VERSION"
+          node -e 'const c=require("./catalog.json"); const e=c.skills.find(x=>x.name===process.env.SKILL); if(!e||e.version!==process.env.VERSION||e.releaseTag!==`${process.env.SKILL}-v${process.env.VERSION}`) process.exit(1)'
+      - name: Build release archive and checksum
+        run: scripts/package-skill.sh "${{ inputs.skill }}"
+      - name: Create namespaced release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.skill }}-v${{ inputs.version }}
+        run: |
+          gh release create "$TAG" \
+            "dist/${TAG}.tar.gz" \
+            "dist/${TAG}.tar.gz.sha256" \
+            --title "$TAG" \
+            --generate-notes

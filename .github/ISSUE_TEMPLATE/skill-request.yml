@@ -1,0 +1,25 @@
+name: Skill request
+description: Propose a portable workflow skill without sharing private data
+title: "[skill] "
+body:
+  - type: input
+    id: workflow
+    attributes:
+      label: Workflow
+      description: What repeatable task should the skill guide?
+    validations:
+      required: true
+  - type: textarea
+    id: triggers
+    attributes:
+      label: Trigger requests
+      description: Provide fictional example prompts that should invoke it.
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety
+      options:
+        - label: This issue contains no credentials, private data, live IDs/URLs, or confidential material.
+          required: true

@@ -1,0 +1,17 @@
+[
+  {
+    "profile": "static",
+    "name": "fixture-static",
+    "title": "Fixture Static"
+  },
+  {
+    "profile": "sheet",
+    "name": "fixture-sheet",
+    "title": "Fixture Sheet"
+  },
+  {
+    "profile": "canvas",
+    "name": "fixture-canvas",
+    "title": "Fixture Canvas"
+  }
+]

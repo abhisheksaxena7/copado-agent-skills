@@ -1,0 +1,22 @@
+{
+  "$schema": "./catalog.schema.json",
+  "catalogVersion": 1,
+  "owner": {
+    "github": "abhisheksaxena7",
+    "continuity": "See CONTRIBUTING.md#ownership-continuity"
+  },
+  "skills": [
+    {
+      "name": "copado-apps-script-webapp",
+      "version": "0.1.0",
+      "path": "skills/copado-apps-script-webapp",
+      "owners": ["abhisheksaxena7"],
+      "compatibility": {
+        "cursor": true,
+        "claudeCode": true,
+        "agentSkills": "portable"
+      },
+      "releaseTag": "copado-apps-script-webapp-v0.1.0"
+    }
+  ]
+}

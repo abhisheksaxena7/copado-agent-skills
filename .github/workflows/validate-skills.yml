@@ -1,0 +1,35 @@
+name: Validate skills
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run validate
+      - run: npm test
+      - name: Package changed skill payloads
+        if: ${{ github.event_name == 'pull_request' }}
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          git diff --name-only "$BASE_SHA"...HEAD |
+            awk -F/ '/^skills\/[^/]+\// { print $2 }' |
+            sort -u |
+            while read -r skill; do
+              [ -z "$skill" ] || scripts/package-skill.sh "$skill"
+            done

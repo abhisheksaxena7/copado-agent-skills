@@ -1,11 +1,17 @@
 ---
 name: replace-with-skill-name
 description: Describes what this portable skill does and the concrete requests that should trigger it.
+license: MIT
+compatibility: Describe required runtimes, system packages, network access, and intended products in 500 characters or fewer.
+metadata:
+  author: replace-with-github-owner
+  version: "0.1.0"
+  domain: replace-with-domain
 ---
 
 # Replace with skill title
 
-Keep this file agent-oriented and under 500 lines. Use only portable `name` and `description` frontmatter.
+Keep this file agent-oriented and under 500 lines. Use only fields from the open Agent Skills specification. Keep all `metadata` keys and values as strings.
 
 ## Workflow
 

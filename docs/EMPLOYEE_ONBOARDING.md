@@ -5,7 +5,8 @@ Use the `copado-apps-script-webapp` skill when you need a Copado internal page, 
 ## Prerequisites
 
 - Copado Google Workspace account with permission to own the Apps Script project.
-- Node.js 20 or newer, npm, and git.
+- Node.js 22.20 or newer, npm, and git for standard Skills CLI installation.
+- Generated projects support Node.js 20 or newer.
 - Cursor or Claude Code.
 - `clasp` only when you are ready for the Google setup phase.
 - `gh` only when you explicitly want the skill to create a private GitHub repository.
@@ -14,13 +15,14 @@ Do not paste OAuth files, Sheet IDs, deployment IDs, private URLs, or production
 
 ## Install in Cursor
 
-From a reviewed catalog release:
+Install in the current project:
 
 ```sh
-./install.sh copado-apps-script-webapp --version 0.1.6 --cursor
+npx skills add abhisheksaxena7/copado-agent-skills \
+  --skill copado-apps-script-webapp --agent cursor
 ```
 
-Restart or reload Cursor after the first installation so the IDE refreshes skill discovery. Ask:
+Add `--global` for all projects. Restart or reload Cursor after the first installation so the IDE refreshes skill discovery. Ask:
 
 ```text
 Create a private Copado Apps Script web app for a read-only Sheet dashboard.
@@ -28,13 +30,16 @@ Create a private Copado Apps Script web app for a read-only Sheet dashboard.
 
 ## Install in Claude Code
 
-From the same reviewed release:
+Install the unchanged payload from the same source:
 
 ```sh
-./install.sh copado-apps-script-webapp --version 0.1.6 --claude
+npx skills add abhisheksaxena7/copado-agent-skills \
+  --skill copado-apps-script-webapp --agent claude-code
 ```
 
 Start a new Claude Code session after the first installation and use the same request. Both IDEs receive the unchanged portable skill directory; neither IDE is the source of truth.
+
+For an exact namespaced release or a machine without the standard Skills CLI, clone `copado-apps-script-webapp-v0.2.0` and run `./install.sh copado-apps-script-webapp --version 0.2.0 --cursor`, `--claude`, or `--all`. Non-current downloads are verified against their published SHA-256 checksum.
 
 ## Answers the skill needs
 
@@ -63,6 +68,6 @@ The public catalog and template contain reusable code, fictional fixtures, and i
 
 ## Direct template alternative
 
-Employees who do not want an agent skill can open the public `copado-apps-script-webapp-template`, select **Use this template**, choose **Private**, and follow its README. The same tests and human gates apply.
+Employees who do not want an agent skill can open the public [Copado Apps Script Web App Template](https://github.com/abhisheksaxena7/copado-apps-script-webapp-template), select **Use this template**, choose **Private**, and follow its README. The same tests and human gates apply.
 
 For operational steps, see the skill's `references/runbook.md`. For common failures, see `references/troubleshooting.md`.

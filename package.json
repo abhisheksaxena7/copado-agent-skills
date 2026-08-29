@@ -5,9 +5,15 @@
   "type": "module",
   "scripts": {
     "validate": "node scripts/validate-catalog.mjs",
-    "test": "node --test test/*.test.mjs"
+    "test": "node --test test/*.test.mjs",
+    "verify:template": "node scripts/verify-template-lock.mjs"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22.20"
+  },
+  "devDependencies": {
+    "ajv": "^8.20.0",
+    "skills": "1.5.23",
+    "yaml": "^2.9.0"
   }
 }

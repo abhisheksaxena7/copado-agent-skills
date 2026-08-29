@@ -1,6 +1,7 @@
 {
   "$schema": "./catalog.schema.json",
   "catalogVersion": 1,
+  "repository": "https://github.com/abhisheksaxena7/copado-agent-skills",
   "owner": {
     "github": "abhisheksaxena7",
     "continuity": "See CONTRIBUTING.md#ownership-continuity"
@@ -8,7 +9,7 @@
   "skills": [
     {
       "name": "copado-apps-script-webapp",
-      "version": "0.1.6",
+      "version": "0.2.0",
       "path": "skills/copado-apps-script-webapp",
       "owners": ["abhisheksaxena7"],
       "compatibility": {
@@ -16,7 +17,7 @@
         "claudeCode": true,
         "agentSkills": "portable"
       },
-      "releaseTag": "copado-apps-script-webapp-v0.1.6"
+      "releaseTag": "copado-apps-script-webapp-v0.2.0"
     }
   ]
 }

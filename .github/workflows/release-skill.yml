@@ -19,30 +19,75 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: release-${{ inputs.skill }}
+  cancel-in-progress: false
+
 jobs:
   release:
     if: ${{ inputs.confirm == 'release-skill' }}
     runs-on: ubuntu-latest
     environment: releases
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
         with:
-          node-version: 20
+          fetch-depth: 0
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: 22.20
           cache: npm
       - run: npm ci
       - run: npm test
       - run: npm run validate
+      - name: Verify external template lock
+        env:
+          SKILL: ${{ inputs.skill }}
+        run: |
+          if [ -f "skills/$SKILL/template.json" ]; then
+            node scripts/verify-template-lock.mjs . "skills/$SKILL/template.json"
+          fi
       - name: Verify requested version
         env:
           SKILL: ${{ inputs.skill }}
           VERSION: ${{ inputs.version }}
+          TAG: ${{ inputs.skill }}-v${{ inputs.version }}
         run: |
           test -f "skills/$SKILL/VERSION"
           test "$(tr -d '[:space:]' < "skills/$SKILL/VERSION")" = "$VERSION"
           node -e 'const c=require("./catalog.json"); const e=c.skills.find(x=>x.name===process.env.SKILL); if(!e||e.version!==process.env.VERSION||e.releaseTag!==`${process.env.SKILL}-v${process.env.VERSION}`) process.exit(1)'
+          grep -Eq "^## ${VERSION//./\\.} - [0-9]{4}-[0-9]{2}-[0-9]{2}$" "skills/$SKILL/CHANGELOG.md"
+          if git ls-remote --exit-code origin "refs/tags/$TAG" >/dev/null 2>&1; then
+            echo "Release tag already exists: $TAG" >&2
+            exit 1
+          fi
       - name: Build release archive and checksum
         run: scripts/package-skill.sh "${{ inputs.skill }}"
+      - name: Verify release archive checksum
+        working-directory: dist
+        run: sha256sum -c "${{ inputs.skill }}-v${{ inputs.version }}.tar.gz.sha256"
+      - name: Build release notes
+        env:
+          SKILL: ${{ inputs.skill }}
+          VERSION: ${{ inputs.version }}
+        run: |
+          node --input-type=module <<'NODE'
+          import { readFileSync, writeFileSync } from 'node:fs';
+          const changelog = readFileSync(`skills/${process.env.SKILL}/CHANGELOG.md`, 'utf8');
+          const marker = `## ${process.env.VERSION} - `;
+          const start = changelog.indexOf(marker);
+          if (start < 0) throw new Error(`Missing changelog section for ${process.env.VERSION}`);
+          const bodyStart = changelog.indexOf('\n', start) + 1;
+          const next = changelog.indexOf('\n## ', bodyStart);
+          const changes = changelog.slice(bodyStart, next < 0 ? undefined : next).trim();
+          let compatibility = 'No external executable template.';
+          try {
+            const template = JSON.parse(readFileSync(`skills/${process.env.SKILL}/template.json`, 'utf8'));
+            compatibility = `${template.repository}@${template.version} (${template.commit})`;
+          } catch (error) {
+            if (error.code !== 'ENOENT') throw error;
+          }
+          writeFileSync('.release-notes.md', `## Compatibility\n\n${compatibility}\n\n## Changes\n\n${changes}\n`);
+          NODE
       - name: Create namespaced release
         env:
           GH_TOKEN: ${{ github.token }}
@@ -52,4 +97,4 @@ jobs:
             "dist/${TAG}.tar.gz" \
             "dist/${TAG}.tar.gz.sha256" \
             --title "$TAG" \
-            --generate-notes
+            --notes-file .release-notes.md

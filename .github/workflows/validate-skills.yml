@@ -12,16 +12,17 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
         with:
-          node-version: 20
+          node-version: 22.20
           cache: npm
       - run: npm ci
       - run: npm run validate
       - run: npm test
+      - run: npm run verify:template
       - name: Package changed skill payloads
         if: ${{ github.event_name == 'pull_request' }}
         env:

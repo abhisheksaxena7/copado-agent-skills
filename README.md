@@ -1,52 +1,99 @@
 # Copado Agent Skills
 
-A collaborative catalog of portable Agent Skills for Copado workflows. Each `skills/<name>/` directory is a self-contained runtime payload; `SKILL.md` remains the source of truth and `catalog.json` provides discovery, compatibility, ownership, and independent release metadata.
+Portable, versioned Agent Skills for Copado workflows. This repository follows the open [Agent Skills specification](https://agentskills.io/specification) and uses the same canonical `skills/` layout as the [Salesforce Skills Library](https://github.com/forcedotcom/sf-skills).
+
+The repository is the source of truth. Every `skills/<name>/` directory is a self-contained runtime payload. `SKILL.md` controls agent behavior; `catalog.json` adds ownership, compatibility, and independent release metadata.
+
+Expect additive changes while the catalog is below `v1.0.0`. Released skill tags and checksums remain immutable.
 
 ## Available skills
 
-- `copado-apps-script-webapp` `0.1.6`: private-by-default static, read-only Sheet, and vendored Canvas Apps Script web apps with stable `/exec` deployment safeguards.
+- `copado-apps-script-webapp` `0.2.0`: creates private-by-default static, read-only Sheet, and vendored Canvas Apps Script web apps with stable `/exec` deployment safeguards.
 
-## Install
+## Quick install
 
-Clone a reviewed release of this catalog:
+The standard Skills CLI supports Cursor, Claude Code, and other compatible agents directly from GitHub:
 
 ```sh
-git clone --depth 1 --branch copado-apps-script-webapp-v0.1.6 \
+npx skills add abhisheksaxena7/copado-agent-skills \
+  --skill copado-apps-script-webapp \
+  --agent cursor --agent claude-code
+```
+
+Project scope is the default. Add `--global` for a user-level installation, `--yes` for reviewed non-interactive automation, or `--copy` where symlinks are not supported. Skills CLI `1.5.23` requires Node.js 22.20 or newer.
+
+Manage the installation with the same CLI:
+
+```sh
+npx skills list
+npx skills update copado-apps-script-webapp
+npx skills remove copado-apps-script-webapp
+```
+
+Reload Cursor or start a new Claude Code session after first installation. Then ask:
+
+```text
+Create a private Copado Apps Script web app for a read-only Sheet dashboard.
+```
+
+See [employee onboarding](docs/EMPLOYEE_ONBOARDING.md) for prerequisites, profiles, expected output, and human gates.
+
+## Exact released versions
+
+Skills release independently with namespaced tags such as `copado-apps-script-webapp-v0.2.0`. For an exact release, clone its tag and use the fallback installer:
+
+```sh
+git clone --depth 1 --branch copado-apps-script-webapp-v0.2.0 \
   https://github.com/abhisheksaxena7/copado-agent-skills.git
 cd copado-agent-skills
+./install.sh copado-apps-script-webapp --version 0.2.0 --all
 ```
 
-Install for Cursor:
+When asked for a non-current version, the fallback installer reads the repository location from `catalog.json`, downloads the namespaced release archive and SHA-256 sidecar, verifies the checksum, validates archive paths, and installs the unchanged payload. Existing installations require explicit `--force` replacement.
 
-```sh
-./install.sh copado-apps-script-webapp --version 0.1.6 --cursor
+If neither installer is available, copy the complete skill directory unchanged to `~/.cursor/skills/` or `~/.claude/skills/`.
+
+## Repository structure
+
+```text
+skills/                  canonical portable skill payloads
+catalog.json             ownership, compatibility, and release index
+catalog.schema.json      machine-validated catalog contract
+templates/new-skill/     starting point for contributors
+scripts/                 validation, packaging, and fallback installation
+test/                    schema, safety, installer, and fixture tests
+docs/                    employee and maintainer guidance
+.github/workflows/       pull-request validation and guarded releases
 ```
 
-Install for Claude Code:
+Detailed instructions belong one level below `SKILL.md` in `references/`. Small snippets or schemas that an agent copies may live in a skill's `assets/`. Complete executable applications belong in separately versioned template repositories.
 
-```sh
-./install.sh copado-apps-script-webapp --version 0.1.6 --claude
-```
-
-Use `--all` to install the unchanged payload for both IDEs. Restart/reload the IDE or begin a new agent session after first installation. Existing installations are not overwritten unless `--force` is explicit.
-
-Authoritative manual fallback: copy the unchanged `skills/copado-apps-script-webapp` directory to `~/.cursor/skills/` or `~/.claude/skills/`.
-
-See `docs/EMPLOYEE_ONBOARDING.md` for prerequisites, invocation, profile selection, expected output, and human gates. See `docs/COMPATIBILITY_AND_RELEASES.md` for the supported version pair, upgrades, canary status, and the remaining `v1.0.0` gates.
+The Apps Script skill therefore pins the standalone [Copado Apps Script Web App Template](https://github.com/abhisheksaxena7/copado-apps-script-webapp-template) by release tag and exact commit. That separation preserves GitHub's **Use this template** flow, template-specific tests and releases, and direct use by employees who do not install an agent skill.
 
 ## Validate and package
 
+Requires Node.js 22.20 or newer:
+
 ```sh
-npm test
+npm ci
 npm run validate
+npm test
 scripts/validate-skill.sh copado-apps-script-webapp
 scripts/package-skill.sh copado-apps-script-webapp
 ```
 
-Packages use namespaced versions such as `copado-apps-script-webapp-v0.1.6`; releasing one skill does not imply other skills changed.
+Validation covers the JSON Schema, official Agent Skills frontmatter, version/tag consistency, portable links and scripts, template locking, standard Skills CLI installation, private-by-default behavior, and package contents.
 
-## Add a skill
+## Contribute
 
-Copy `templates/new-skill`, add `VERSION`, references, scripts, fixtures, and a unique `catalog.json` entry. Keep executable product templates in separate repositories and pin immutable releases from the skill.
+Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request. It defines naming, frontmatter, references/assets, executable-template boundaries, fixtures, versioning, changelogs, ownership, and release review.
 
-The catalog and template are public, but scaffolded applications, Google resources, IDs, credentials, URLs, and business data remain private. See `CONTRIBUTING.md`, `SECURITY.md`, and the pull request template. The repository owner confirmed provenance, Copado branding/republication approval, personal-account publication, and MIT compatibility.
+Executable template behavior changes release in the template repository first. The dependent skill then updates its exact pin and is tested against all profiles. Generic skill changes stay entirely in this repository.
+
+Report security issues through the private process in [SECURITY.md](SECURITY.md). Use the skill request issue form for new workflow proposals and fictional trigger examples.
+
+## Distribution boundaries
+
+The standard Skills CLI and checksummed GitHub releases are the supported channels. npm publication, Claude plugin bundles, and committed full-application samples are intentionally deferred until they solve a concrete distribution need; they must not become parallel sources of truth.
+
+The catalog and template are public. Generated applications, Google resources, credentials, IDs, private URLs, and business data remain private unless separately reviewed and approved.

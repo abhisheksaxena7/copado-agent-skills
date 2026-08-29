@@ -40,8 +40,9 @@ storage_key="${storage_key:-$name}"
 "$skill_dir/scripts/preflight.sh" scaffold
 template_repo="$(node -e 'const x=require(process.argv[1]); process.stdout.write(x.repository)' "$skill_dir/template.json")"
 template_version="$(node -e 'const x=require(process.argv[1]); process.stdout.write(x.version)' "$skill_dir/template.json")"
+template_commit="$(node -e 'const x=require(process.argv[1]); process.stdout.write(x.commit)' "$skill_dir/template.json")"
 
-echo "Pinned template: $template_repo@$template_version"
+echo "Pinned template: $template_repo@$template_version ($template_commit)"
 echo "Destination: $destination"
 echo "Profile: $profile"
 echo "Generated repository visibility: private"
@@ -53,6 +54,13 @@ fi
 
 [ ! -e "$destination" ] || { echo "Destination already exists: $destination" >&2; exit 1; }
 git clone --depth 1 --branch "$template_version" "$template_repo" "$destination"
+resolved_commit="$(git -C "$destination" rev-parse HEAD)"
+[ "$resolved_commit" = "$template_commit" ] || {
+  echo "Template integrity check failed: $template_version resolved to $resolved_commit, expected $template_commit." >&2
+  echo "The cloned directory was not initialized. Review and remove it manually: $destination" >&2
+  exit 1
+}
+echo "Verified template commit: $resolved_commit"
 rm -rf "$destination/.git"
 git -C "$destination" init -b main
 

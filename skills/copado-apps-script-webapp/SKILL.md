@@ -1,6 +1,12 @@
 ---
 name: copado-apps-script-webapp
 description: Scaffolds and guides domain-restricted Copado internal pages and Google Apps Script web apps, including static pages, read-only Sheet-backed dashboards, vendored Canvas/React publication, stable /exec deployments, and SalesHood or iframe embeds. Use when creating, converting, testing, deploying, or troubleshooting these apps.
+license: MIT
+compatibility: Requires Node.js 20+, npm, git, and network access for scaffolding; clasp and a Copado Google Workspace account are required only for Google setup and deployment.
+metadata:
+  author: abhisheksaxena7
+  version: "0.2.0"
+  domain: copado-apps-script
 ---
 
 # Copado Apps Script web app
@@ -47,10 +53,10 @@ scripts/scaffold.sh --dry-run --profile static --name example-tool --title "Exam
 
 After the user approves local creation, remove `--dry-run`. Add `--github OWNER/REPO` only after the user explicitly approves creating a **private** GitHub repository. The script never pushes, authenticates Google, uploads credentials, or deploys.
 
-The template source and immutable release are pinned in `template.json`. Never scaffold from `main`. To upgrade:
+The template source, semantic tag, and exact commit are pinned in `template.json`; the scaffold stops if the tag resolves elsewhere. Never scaffold from `main`. To upgrade:
 
-1. Review a specific released template tag and paired release notes.
-2. Update only `template.json`.
+1. Review a specific released template tag, its resolved commit, and paired release notes.
+2. Update the tag and full commit in `template.json`.
 3. Run `scripts/verify-project.sh` against all three fixture profiles.
 4. Release a new skill version.
 

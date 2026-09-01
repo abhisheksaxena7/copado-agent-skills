@@ -1,0 +1,58 @@
+{
+  "salesforce-url-navigation": {
+    "cursor": [
+      "Open the Fabrikam Holdings account record by direct URL instead of clicking"
+    ],
+    "claudeCode": [
+      "The page loaded but it took me to my default app; fix the Lightning app URL"
+    ]
+  },
+  "salesforce-apex-test-patterns": {
+    "cursor": [
+      "Our Apex coverage is 92% but this bug shipped; review the test patterns"
+    ],
+    "claudeCode": [
+      "Add a runAs permission-context test for the FabrikamQuoteService class"
+    ]
+  },
+  "salesforce-custom-object-build-checklist": {
+    "cursor": [
+      "I deployed Fabrikam_Order__c successfully but nobody can see the fields"
+    ],
+    "claudeCode": [
+      "Build a custom object that people will actually use, end to end"
+    ]
+  },
+  "salesforce-permission-set-provisioning": {
+    "cursor": [
+      "describe cannot see the new Fabrikam_Total__c field I just deployed"
+    ],
+    "claudeCode": [
+      "Write and assign a permission set for the custom fields I just deployed"
+    ]
+  },
+  "salesforce-named-credential-provisioning": {
+    "cursor": [
+      "Provision a Named Credential for the Fabrikam ticketing API from metadata"
+    ],
+    "claudeCode": [
+      "My callout fails authorization even though the Named Credential deployed clean"
+    ]
+  },
+  "salesforce-lwc-build-patterns": {
+    "cursor": [
+      "My LWC fix deployed but the old bundle is still being served"
+    ],
+    "claudeCode": [
+      "The imperative Apex call in connectedCallback takes 40 seconds on mount"
+    ]
+  },
+  "salesforce-soql-data-integrity": {
+    "cursor": [
+      "This SOQL query returns 25 rows but the object has 115; nothing errored"
+    ],
+    "claudeCode": [
+      "Reconcile the row count before I quote this number in the migration report"
+    ]
+  }
+}

@@ -86,5 +86,13 @@
     "claudeCode": [
       "A variable I mapped in the job template never arrived in the run"
     ]
+  },
+  "copado-ai-dialogue-api": {
+    "cursor": [
+      "Write Apex that sends a message to a Copado AI dialogue"
+    ],
+    "claudeCode": [
+      "Read the full transcript of a Copado AI dialogue from Apex"
+    ]
   }
 }

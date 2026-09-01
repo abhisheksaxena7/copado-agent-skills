@@ -8,6 +8,21 @@
   },
   "skills": [
     {
+      "name": "copado-ai-dialogue-api",
+      "version": "0.1.0",
+      "path": "skills/copado-ai-dialogue-api",
+      "owners": [
+        "abhisheksaxena7",
+        "joecopado"
+      ],
+      "compatibility": {
+        "cursor": true,
+        "claudeCode": true,
+        "agentSkills": "portable"
+      },
+      "releaseTag": "copado-ai-dialogue-api-v0.1.0"
+    },
+    {
       "name": "copado-apps-script-webapp",
       "version": "0.2.0",
       "path": "skills/copado-apps-script-webapp",

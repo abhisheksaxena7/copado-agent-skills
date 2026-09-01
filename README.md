@@ -26,6 +26,7 @@ Copado product knowledge:
 - `copado-cicd-crt-handoff` `0.1.0`: diagnose a robotic test run's missing or wrong variables from the CI/CD records instead of by burning builds.
 - `copado-crt-jwt-provisioning` `0.1.0`: end-to-end JWT provisioning for a Copado Robotic Testing job, including the External Client App path.
 - `copado-crt-pace-batch-trigger` `0.1.0`: fire many robotic test builds in one call, with per-run parameters and safe response handling.
+- `copado-ai-dialogue-api` `0.1.0`: the confirmed Copado AI dialogue API surface for Apex and Robot Framework integrations.
 
 ## Quick install
 

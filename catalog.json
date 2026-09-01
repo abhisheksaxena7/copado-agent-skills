@@ -52,6 +52,36 @@
       "releaseTag": "copado-cicd-object-model-v0.1.0"
     },
     {
+      "name": "copado-crt-jwt-provisioning",
+      "version": "0.1.0",
+      "path": "skills/copado-crt-jwt-provisioning",
+      "owners": [
+        "abhisheksaxena7",
+        "joecopado"
+      ],
+      "compatibility": {
+        "cursor": true,
+        "claudeCode": true,
+        "agentSkills": "portable"
+      },
+      "releaseTag": "copado-crt-jwt-provisioning-v0.1.0"
+    },
+    {
+      "name": "copado-crt-pace-batch-trigger",
+      "version": "0.1.0",
+      "path": "skills/copado-crt-pace-batch-trigger",
+      "owners": [
+        "abhisheksaxena7",
+        "joecopado"
+      ],
+      "compatibility": {
+        "cursor": true,
+        "claudeCode": true,
+        "agentSkills": "portable"
+      },
+      "releaseTag": "copado-crt-pace-batch-trigger-v0.1.0"
+    },
+    {
       "name": "salesforce-apex-test-patterns",
       "version": "0.1.0",
       "path": "skills/salesforce-apex-test-patterns",

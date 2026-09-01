@@ -24,6 +24,8 @@ Copado product knowledge:
 
 - `copado-cicd-object-model` `0.1.0`: what Copado CI/CD stores, and the read-only discovery method for extending the map.
 - `copado-cicd-crt-handoff` `0.1.0`: diagnose a robotic test run's missing or wrong variables from the CI/CD records instead of by burning builds.
+- `copado-crt-jwt-provisioning` `0.1.0`: end-to-end JWT provisioning for a Copado Robotic Testing job, including the External Client App path.
+- `copado-crt-pace-batch-trigger` `0.1.0`: fire many robotic test builds in one call, with per-run parameters and safe response handling.
 
 ## Quick install
 

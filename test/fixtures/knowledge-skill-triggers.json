@@ -55,6 +55,22 @@
       "Reconcile the row count before I quote this number in the migration report"
     ]
   },
+  "copado-crt-jwt-provisioning": {
+    "cursor": [
+      "My Copado Robotic Testing job fails with invalid_client on JWT login"
+    ],
+    "claudeCode": [
+      "Set up JWT auth for a CRT job against a sandbox, end to end"
+    ]
+  },
+  "copado-crt-pace-batch-trigger": {
+    "cursor": [
+      "Fire all 50 data-table partitions as CRT builds in one call"
+    ],
+    "claudeCode": [
+      "Trigger a run-all for this CRT job that the UI does not expose"
+    ]
+  },
   "copado-cicd-object-model": {
     "cursor": [
       "What does Copado CI/CD actually store for a job execution?"

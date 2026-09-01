@@ -20,6 +20,11 @@ Salesforce platform knowledge:
 - `salesforce-lwc-build-patterns` `0.1.0`: the LWC failures that live in Lightning's caching, action queue, and layout behavior rather than in your code.
 - `salesforce-soql-data-integrity` `0.1.0`: why a SOQL result can be quietly short, and the reconciliation that catches it.
 
+Copado product knowledge:
+
+- `copado-cicd-object-model` `0.1.0`: what Copado CI/CD stores, and the read-only discovery method for extending the map.
+- `copado-cicd-crt-handoff` `0.1.0`: diagnose a robotic test run's missing or wrong variables from the CI/CD records instead of by burning builds.
+
 ## Quick install
 
 The standard Skills CLI supports Cursor, Claude Code, and other compatible agents directly from GitHub:

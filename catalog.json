@@ -22,6 +22,36 @@
       "releaseTag": "copado-apps-script-webapp-v0.2.0"
     },
     {
+      "name": "copado-cicd-crt-handoff",
+      "version": "0.1.0",
+      "path": "skills/copado-cicd-crt-handoff",
+      "owners": [
+        "abhisheksaxena7",
+        "joecopado"
+      ],
+      "compatibility": {
+        "cursor": true,
+        "claudeCode": true,
+        "agentSkills": "portable"
+      },
+      "releaseTag": "copado-cicd-crt-handoff-v0.1.0"
+    },
+    {
+      "name": "copado-cicd-object-model",
+      "version": "0.1.0",
+      "path": "skills/copado-cicd-object-model",
+      "owners": [
+        "abhisheksaxena7",
+        "joecopado"
+      ],
+      "compatibility": {
+        "cursor": true,
+        "claudeCode": true,
+        "agentSkills": "portable"
+      },
+      "releaseTag": "copado-cicd-object-model-v0.1.0"
+    },
+    {
       "name": "salesforce-apex-test-patterns",
       "version": "0.1.0",
       "path": "skills/salesforce-apex-test-patterns",

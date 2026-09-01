@@ -54,5 +54,21 @@
     "claudeCode": [
       "Reconcile the row count before I quote this number in the migration report"
     ]
+  },
+  "copado-cicd-object-model": {
+    "cursor": [
+      "What does Copado CI/CD actually store for a job execution?"
+    ],
+    "claudeCode": [
+      "Trace how a variable travels from Copado CI/CD into a test run"
+    ]
+  },
+  "copado-cicd-crt-handoff": {
+    "cursor": [
+      "The CRT run says loginUrl is set but there is no session in it"
+    ],
+    "claudeCode": [
+      "A variable I mapped in the job template never arrived in the run"
+    ]
   }
 }

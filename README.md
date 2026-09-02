@@ -10,6 +10,24 @@ Expect additive changes while the catalog is below `v1.0.0`. Released skill tags
 
 - `copado-apps-script-webapp` `0.2.0`: creates private-by-default static, read-only Sheet, and vendored Canvas Apps Script web apps with stable `/exec` deployment safeguards.
 
+Salesforce platform knowledge:
+
+- `salesforce-url-navigation` `0.1.0`: URL-first navigation, the verified URL forms, environment host patterns, and the traps where a wrong URL renders a plausible page instead of an error.
+- `salesforce-custom-object-build-checklist` `0.1.0`: the ordered checklist that takes a custom object from deployed to actually usable.
+- `salesforce-permission-set-provisioning` `0.1.0`: the permission set that makes newly deployed custom fields visible to anyone, including administrators.
+- `salesforce-named-credential-provisioning` `0.1.0`: provision a Named Credential from metadata and prove it with a real callout.
+- `salesforce-apex-test-patterns` `0.1.0`: Apex tests that catch bugs rather than coverage, including the runAs permission harness.
+- `salesforce-lwc-build-patterns` `0.1.0`: the LWC failures that live in Lightning's caching, action queue, and layout behavior rather than in your code.
+- `salesforce-soql-data-integrity` `0.1.0`: why a SOQL result can be quietly short, and the reconciliation that catches it.
+
+Copado product knowledge:
+
+- `copado-cicd-object-model` `0.1.0`: what Copado CI/CD stores, and the read-only discovery method for extending the map.
+- `copado-cicd-crt-handoff` `0.1.0`: diagnose a robotic test run's missing or wrong variables from the CI/CD records instead of by burning builds.
+- `copado-crt-jwt-provisioning` `0.1.0`: end-to-end JWT provisioning for a Copado Robotic Testing job, including the External Client App path.
+- `copado-crt-pace-batch-trigger` `0.1.0`: fire many robotic test builds in one call, with per-run parameters and safe response handling.
+- `copado-ai-dialogue-api` `0.1.0`: the confirmed Copado AI dialogue API surface for Apex and Robot Framework integrations.
+
 ## Quick install
 
 The standard Skills CLI supports Cursor, Claude Code, and other compatible agents directly from GitHub:

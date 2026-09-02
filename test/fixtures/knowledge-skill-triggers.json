@@ -1,0 +1,98 @@
+{
+  "salesforce-url-navigation": {
+    "cursor": [
+      "Open the Fabrikam Holdings account record by direct URL instead of clicking"
+    ],
+    "claudeCode": [
+      "The page loaded but it took me to my default app; fix the Lightning app URL"
+    ]
+  },
+  "salesforce-apex-test-patterns": {
+    "cursor": [
+      "Our Apex coverage is 92% but this bug shipped; review the test patterns"
+    ],
+    "claudeCode": [
+      "Add a runAs permission-context test for the FabrikamQuoteService class"
+    ]
+  },
+  "salesforce-custom-object-build-checklist": {
+    "cursor": [
+      "I deployed Fabrikam_Order__c successfully but nobody can see the fields"
+    ],
+    "claudeCode": [
+      "Build a custom object that people will actually use, end to end"
+    ]
+  },
+  "salesforce-permission-set-provisioning": {
+    "cursor": [
+      "describe cannot see the new Fabrikam_Total__c field I just deployed"
+    ],
+    "claudeCode": [
+      "Write and assign a permission set for the custom fields I just deployed"
+    ]
+  },
+  "salesforce-named-credential-provisioning": {
+    "cursor": [
+      "Provision a Named Credential for the Fabrikam ticketing API from metadata"
+    ],
+    "claudeCode": [
+      "My callout fails authorization even though the Named Credential deployed clean"
+    ]
+  },
+  "salesforce-lwc-build-patterns": {
+    "cursor": [
+      "My LWC fix deployed but the old bundle is still being served"
+    ],
+    "claudeCode": [
+      "The imperative Apex call in connectedCallback takes 40 seconds on mount"
+    ]
+  },
+  "salesforce-soql-data-integrity": {
+    "cursor": [
+      "This SOQL query returns 25 rows but the object has 115; nothing errored"
+    ],
+    "claudeCode": [
+      "Reconcile the row count before I quote this number in the migration report"
+    ]
+  },
+  "copado-crt-jwt-provisioning": {
+    "cursor": [
+      "My Copado Robotic Testing job fails with invalid_client on JWT login"
+    ],
+    "claudeCode": [
+      "Set up JWT auth for a CRT job against a sandbox, end to end"
+    ]
+  },
+  "copado-crt-pace-batch-trigger": {
+    "cursor": [
+      "Fire all 50 data-table partitions as CRT builds in one call"
+    ],
+    "claudeCode": [
+      "Trigger a run-all for this CRT job that the UI does not expose"
+    ]
+  },
+  "copado-cicd-object-model": {
+    "cursor": [
+      "What does Copado CI/CD actually store for a job execution?"
+    ],
+    "claudeCode": [
+      "Trace how a variable travels from Copado CI/CD into a test run"
+    ]
+  },
+  "copado-cicd-crt-handoff": {
+    "cursor": [
+      "The CRT run says loginUrl is set but there is no session in it"
+    ],
+    "claudeCode": [
+      "A variable I mapped in the job template never arrived in the run"
+    ]
+  },
+  "copado-ai-dialogue-api": {
+    "cursor": [
+      "Write Apex that sends a message to a Copado AI dialogue"
+    ],
+    "claudeCode": [
+      "Read the full transcript of a Copado AI dialogue from Apex"
+    ]
+  }
+}

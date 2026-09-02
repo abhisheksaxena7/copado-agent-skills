@@ -8,16 +8,198 @@
   },
   "skills": [
     {
+      "name": "copado-ai-dialogue-api",
+      "version": "0.1.0",
+      "path": "skills/copado-ai-dialogue-api",
+      "owners": [
+        "abhisheksaxena7",
+        "joecopado"
+      ],
+      "compatibility": {
+        "cursor": true,
+        "claudeCode": true,
+        "agentSkills": "portable"
+      },
+      "releaseTag": "copado-ai-dialogue-api-v0.1.0"
+    },
+    {
       "name": "copado-apps-script-webapp",
       "version": "0.2.0",
       "path": "skills/copado-apps-script-webapp",
-      "owners": ["abhisheksaxena7"],
+      "owners": [
+        "abhisheksaxena7"
+      ],
       "compatibility": {
         "cursor": true,
         "claudeCode": true,
         "agentSkills": "portable"
       },
       "releaseTag": "copado-apps-script-webapp-v0.2.0"
+    },
+    {
+      "name": "copado-cicd-crt-handoff",
+      "version": "0.1.0",
+      "path": "skills/copado-cicd-crt-handoff",
+      "owners": [
+        "abhisheksaxena7",
+        "joecopado"
+      ],
+      "compatibility": {
+        "cursor": true,
+        "claudeCode": true,
+        "agentSkills": "portable"
+      },
+      "releaseTag": "copado-cicd-crt-handoff-v0.1.0"
+    },
+    {
+      "name": "copado-cicd-object-model",
+      "version": "0.1.0",
+      "path": "skills/copado-cicd-object-model",
+      "owners": [
+        "abhisheksaxena7",
+        "joecopado"
+      ],
+      "compatibility": {
+        "cursor": true,
+        "claudeCode": true,
+        "agentSkills": "portable"
+      },
+      "releaseTag": "copado-cicd-object-model-v0.1.0"
+    },
+    {
+      "name": "copado-crt-jwt-provisioning",
+      "version": "0.1.0",
+      "path": "skills/copado-crt-jwt-provisioning",
+      "owners": [
+        "abhisheksaxena7",
+        "joecopado"
+      ],
+      "compatibility": {
+        "cursor": true,
+        "claudeCode": true,
+        "agentSkills": "portable"
+      },
+      "releaseTag": "copado-crt-jwt-provisioning-v0.1.0"
+    },
+    {
+      "name": "copado-crt-pace-batch-trigger",
+      "version": "0.1.0",
+      "path": "skills/copado-crt-pace-batch-trigger",
+      "owners": [
+        "abhisheksaxena7",
+        "joecopado"
+      ],
+      "compatibility": {
+        "cursor": true,
+        "claudeCode": true,
+        "agentSkills": "portable"
+      },
+      "releaseTag": "copado-crt-pace-batch-trigger-v0.1.0"
+    },
+    {
+      "name": "salesforce-apex-test-patterns",
+      "version": "0.1.0",
+      "path": "skills/salesforce-apex-test-patterns",
+      "owners": [
+        "abhisheksaxena7",
+        "joecopado"
+      ],
+      "compatibility": {
+        "cursor": true,
+        "claudeCode": true,
+        "agentSkills": "portable"
+      },
+      "releaseTag": "salesforce-apex-test-patterns-v0.1.0"
+    },
+    {
+      "name": "salesforce-custom-object-build-checklist",
+      "version": "0.1.0",
+      "path": "skills/salesforce-custom-object-build-checklist",
+      "owners": [
+        "abhisheksaxena7",
+        "joecopado"
+      ],
+      "compatibility": {
+        "cursor": true,
+        "claudeCode": true,
+        "agentSkills": "portable"
+      },
+      "releaseTag": "salesforce-custom-object-build-checklist-v0.1.0"
+    },
+    {
+      "name": "salesforce-lwc-build-patterns",
+      "version": "0.1.0",
+      "path": "skills/salesforce-lwc-build-patterns",
+      "owners": [
+        "abhisheksaxena7",
+        "joecopado"
+      ],
+      "compatibility": {
+        "cursor": true,
+        "claudeCode": true,
+        "agentSkills": "portable"
+      },
+      "releaseTag": "salesforce-lwc-build-patterns-v0.1.0"
+    },
+    {
+      "name": "salesforce-named-credential-provisioning",
+      "version": "0.1.0",
+      "path": "skills/salesforce-named-credential-provisioning",
+      "owners": [
+        "abhisheksaxena7",
+        "joecopado"
+      ],
+      "compatibility": {
+        "cursor": true,
+        "claudeCode": true,
+        "agentSkills": "portable"
+      },
+      "releaseTag": "salesforce-named-credential-provisioning-v0.1.0"
+    },
+    {
+      "name": "salesforce-permission-set-provisioning",
+      "version": "0.1.0",
+      "path": "skills/salesforce-permission-set-provisioning",
+      "owners": [
+        "abhisheksaxena7",
+        "joecopado"
+      ],
+      "compatibility": {
+        "cursor": true,
+        "claudeCode": true,
+        "agentSkills": "portable"
+      },
+      "releaseTag": "salesforce-permission-set-provisioning-v0.1.0"
+    },
+    {
+      "name": "salesforce-soql-data-integrity",
+      "version": "0.1.0",
+      "path": "skills/salesforce-soql-data-integrity",
+      "owners": [
+        "abhisheksaxena7",
+        "joecopado"
+      ],
+      "compatibility": {
+        "cursor": true,
+        "claudeCode": true,
+        "agentSkills": "portable"
+      },
+      "releaseTag": "salesforce-soql-data-integrity-v0.1.0"
+    },
+    {
+      "name": "salesforce-url-navigation",
+      "version": "0.1.0",
+      "path": "skills/salesforce-url-navigation",
+      "owners": [
+        "abhisheksaxena7",
+        "joecopado"
+      ],
+      "compatibility": {
+        "cursor": true,
+        "claudeCode": true,
+        "agentSkills": "portable"
+      },
+      "releaseTag": "salesforce-url-navigation-v0.1.0"
     }
   ]
 }
